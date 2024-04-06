@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dd if=4870.ROM of=efi.part bs=1 skip=63488 count=49152
+blocknum=`printf %d "'\`dd if=PC4870.ROM bs=1 skip=2 count=1 2>/dev/null\`"`
+size=$(($blocknum * 512))
+dd if=efi.part of=PC4870.ROM bs=$size seek=1 conv=notrunc
+python2.7 fixrom.py PC4870.ROM MAC4870.ROM

@@ -1,0 +1,1 @@
+amdflash -s 0 pc4870.rom
